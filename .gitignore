@@ -1,0 +1,3 @@
+# all *.sql file should not be tracked
+
+*.sql
