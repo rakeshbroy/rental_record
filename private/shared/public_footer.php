@@ -1,4 +1,4 @@
-    <footer>
+    <footer class="container bg-light text-center">
         <p>Copyright <?php echo date('Y'); ?>, Online Rental Record Service</p>
     </footer>
 

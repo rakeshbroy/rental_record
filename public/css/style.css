@@ -11,16 +11,6 @@ body {
   margin: 0 auto;
 }
 
-a {
-  text-decoration: none;
-  padding: 10px 25px;
-  background-color: #0b2545;
-  display: inline-block;
-  border-radius: 5px;
-  color: white;
-  margin: 5px;
-}
-
 .back {
   background-color: olivedrab;
 }
