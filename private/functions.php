@@ -36,9 +36,12 @@
     function display_errors($errors=array()) {
         $output = '';
         if(!empty($errors)) {
-          $output .= "<div class=\"errors\">";
-          $output .= "Please fix the following errors:";
-          $output .= "<ul>";
+          $output .= "<div class=\"alert alert-info alert-dismissible fade show container mt-3\">";
+          $output .= "<button class=\"close\" type=\"button\" data-dismiss=\"alert\" aria-label=\"close\">";
+          $output .= "<span aria-hidden=\"true\">&times;</span>";
+          $output .= "</button>";
+          $output .= "<h6 class=\"alert-heading\">Please fix the following errors.</h6>";
+          $output .= "<ul class=\"list-unstyled\">";
           foreach($errors as $error) {
             $output .= "<li>" . h($error) . "</li>";
           }
