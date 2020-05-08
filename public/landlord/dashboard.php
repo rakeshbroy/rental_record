@@ -13,11 +13,12 @@ $landlord = find_landlord_by_id($id);
 <?php $page_title = "Dashboard"; ?>
 
 <?php include_once(SHARED_PATH . '/public_header.php'); ?>
+<?php include_once(SHARED_PATH . '/public_navigation.php'); ?>
 
-<section role="dashboard">
+<section class="container mt-3" role="dashboard">
     <h2>Dashboard<h2>
     <h3>Welcome, <?php echo $landlord['first_name'] . " " . $landlord['last_name']; ?></h3>
-    <a href="<?php echo url_for('/landlord/logout.php') ?>" >Logout</a>
+    <!-- <a href="<?php echo url_for('/landlord/logout.php') ?>" >Logout</a> -->
 
 </section>
 

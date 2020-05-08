@@ -2,9 +2,9 @@
 
 $page_title = "Log In"; 
 
-    $errros = [];
+    // $errors = [];
     $username = '';
-    $password ='';
+    $password = '';
 
     if(is_post_request()) {
         $username = $_POST['username'] ?? '';
@@ -12,14 +12,14 @@ $page_title = "Log In";
 
         // validation
         if(is_blank($username)) {
-            $errros[] = "Username can't be blank.";
+            $errors[] = "Username can't be blank.";
         }
         if(is_blank($password)) {
-            $errros[] = "Password can't be blank.";
+            $errors[] = "Password can't be blank.";
         }
 
         // if there were no errors, try to login
-        if(empty($errros)) {
+        if(empty($errors)) {
             $login_failure_msg = "Invalid username and password.";
 
             $landlord = find_landlord_by_username($username);
@@ -31,10 +31,10 @@ $page_title = "Log In";
                     log_in_landlord($landlord);
                     redirect_to(url_for('/landlord/dashboard.php?id=' . $landlord['id']));
                 } else {
-                    $errros[] = $login_failure_msg;
+                    $errors[] = $login_failure_msg;
                 }
             } else {
-                $errros[] = $login_failure_msg;
+                $errors[] = $login_failure_msg;
             }
         }
     }
@@ -42,32 +42,45 @@ $page_title = "Log In";
 ?>
 
 <?php include_once(SHARED_PATH . '/public_header.php'); ?>
-
-<section role="login">
-    <a id="back-link" href="<?php echo url_for() ?>">&laquo;back</a>
-    <?php echo display_errors($errros); ?>
-    <div class="login-form-wrapper">
-        <form method="post" action="<?= url_for('/landlord/login.php')?>">
-            <dl>
-                <dt>
-                    <label for="username" role="usernamelabel">Username : </label>
-                </dt>
-                <dd>
-                    <input type="text" name="username" value="<?= $username ?>">
-                </dd>
-            </dl>
-            <dl>
-                <dt>
-                    <label for="password" role="passwordlabel">Password : </label>
-                </dt>
-                <dd>
-                    <input type="password" name="password">
-                </dd>
-            </dl>
-            <input type="submit" name="submit" value="log In">
-        </form>  
+<?php include_once(SHARED_PATH . '/public_navigation.php'); ?>
+<?php echo display_errors($errors); ?>
+<section class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-5 col-12">
+            <form method="post" action="<?= url_for('/landlord/login.php')?>">
+                <fieldset class="form-group" role="login">
+                    <!-- <a id="back-link" href="<?php echo url_for() ?>">&laquo;back</a> -->
+                    <legend class="text-center">Login</legend>
+                    <!-- <?php echo display_errors($errors); ?> -->
+                    <div class="form-group">
+                        <label class="form-control-label sr-only" for="username" role="usernamelabel">Username</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <img class="d-block img-fluid" src="<?= url_for('/images/username-icon.png'); ?>" alt="" style="width:20px;">
+                                    </div>
+                                </div>
+                                <input class="form-control" type="text" name="username" placeholder="Username" value="<?= $username ?>"> 
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label sr-only" for="password" role="passwordlabel">Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <img class="d-block img-fluid" src="<?= url_for('/images/password-icon.png'); ?>" alt="" style="width:20px;">
+                                </div>
+                            </div>
+                            <input class="form-control" type="password" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                </fieldset>
+                <input class="btn btn-secondary btn-block" type="submit" name="submit" value="log In">
+            </form>  
+        </div>
+        <!-- col div -->
     </div>
+    <!-- div row -->
 </section>
-
 
 <?php include_once(SHARED_PATH . '/public_footer.php'); ?>
