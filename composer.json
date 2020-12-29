@@ -1,0 +1,13 @@
+{
+    "name": "rakesh/rental_record",
+    "description": "A simple database application to manage tenent records",
+    "type": "Project",
+    "license": "GPL 3.0",
+    "authors": [
+        {
+            "name": "Rakesh Kumar",
+            "email": "rkrakesh133@gmail.com"
+        }
+    ],
+    "require": {}
+}

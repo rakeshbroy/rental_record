@@ -122,5 +122,44 @@ function insert_landlord($landlord) {
     }
 }
 
+// tenant
+function find_all_tenants() {
+    global $db;
+    $sql = "select * from tenant";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+}
 
+function find_tenant_by_id($id) {
+    global $db;
+
+    $sql = "select * from tenant ";
+    $sql .= "where id='" . db_escape($db, $id) . "' ";
+    $sql .= "limit 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $tenant = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $tenant;
+}
+
+function update_tenant($id, $tenant) {
+    global $db;
+    $sql = "update tenant set ";
+    $sql .= "first_name='" . $tenant['first_name'] . "', ";
+    $sql .= "middle_name='" . $tenant['middle_name'] . "', ";
+    $sql .= "last_name='" . $tenant['last_name'] . "', ";
+    $sql .= "gender='" . $tenant['gender'] . "', ";
+    $sql .= "marital_status='" . $tenant['marital_status'] . "', ";
+    $sql .= "parmanent_address='" . $tenant["parmanent_address"] . "', ";
+    $sql .= "current_address='" . $tenant["current_address"] . "', ";
+    $sql .= "mobile_no=" . $tenant["mobile_no"] . ", ";
+    $sql .= "date_of_prohibition='" . $tenant["date_of_prohibition"] . "' ";
+    $sql .= "where id=" . $id;
+
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return true;
+}
 ?>

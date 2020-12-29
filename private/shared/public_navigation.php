@@ -1,9 +1,17 @@
 <nav class="nav navbar-dark navbar-expand-sm sticky-top" style="background-color: #8F939E;">
     <div class="container">
         <div class="navbar-nav justify-content-end p-1">
-            <a class="nav-item nav-link" href="<?= url_for(); ?>">Home</a>
-            <a class="nav-item nav-link" href="#">About Us</a>
-            <a class="nav-item nav-link" href="#">Rules & Regulations For Tenent</a>
+            <a class="nav-item nav-link" href=" <?php 
+                                                  if(is_logged_in()) {
+                                                    echo url_for('/landlord/dashboard.php?id=' . $_SESSION['landlord_id']);
+                                                  } else {
+                                                    echo url_for();
+                                                  }
+                                                ?>">Home</a>
+            <?php if(!is_logged_in()) {?>
+              <?= '<a class="nav-item nav-link" href="#">About Us</a>' ?>
+              <?= '<a class="nav-item nav-link" href="#">Rules & Regulations For Tenent</a>' ?>
+            <?php } ?>
             <?php if(is_logged_in()) { ?>
               <div class="dropdown">
                 <a 
@@ -24,7 +32,9 @@
               </div>
 
             <?php } ?>
-            <a class="nav-item nav-link" href="#">Contact Us</a>
+            <?php if(!is_logged_in()) { ?>
+              <?= '<a class="nav-item nav-link" href="#">Contact Us</a>' ?>
+            <?php } ?>
         </div>
     </div>
 </nav>

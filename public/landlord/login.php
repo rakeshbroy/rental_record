@@ -44,14 +44,15 @@ $page_title = "Log In";
 <?php include_once(SHARED_PATH . '/public_header.php'); ?>
 <?php include_once(SHARED_PATH . '/public_navigation.php'); ?>
 <?php echo display_errors($errors); ?>
+<div class="d-none" id="alert-box">
+
+</div>
 <section class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-md-5 col-12">
-            <form method="post" action="<?= url_for('/landlord/login.php')?>">
+            <form id="loginform" method="post" action="<?= url_for('/landlord/login.php')?>" name="myform">
                 <fieldset class="form-group" role="login">
-                    <!-- <a id="back-link" href="<?php echo url_for() ?>">&laquo;back</a> -->
                     <legend class="text-center">Login</legend>
-                    <!-- <?php echo display_errors($errors); ?> -->
                     <div class="form-group">
                         <label class="form-control-label sr-only" for="username" role="usernamelabel">Username</label>
                             <div class="input-group">
@@ -60,7 +61,7 @@ $page_title = "Log In";
                                         <img class="d-block img-fluid" src="<?= url_for('/images/username-icon.png'); ?>" alt="" style="width:20px;">
                                     </div>
                                 </div>
-                                <input class="form-control" type="text" name="username" placeholder="Username" value="<?= $username ?>"> 
+                                <input id="username" class="form-control" type="text" name="username" placeholder="Username" value="<?= $username ?>" required >
                             </div>
                     </div>
                     <div class="form-group">
@@ -71,7 +72,7 @@ $page_title = "Log In";
                                     <img class="d-block img-fluid" src="<?= url_for('/images/password-icon.png'); ?>" alt="" style="width:20px;">
                                 </div>
                             </div>
-                            <input class="form-control" type="password" name="password" placeholder="Password">
+                            <input id="password" class="form-control" type="password" name="password" placeholder="Password" required>
                         </div>
                     </div>
                 </fieldset>
