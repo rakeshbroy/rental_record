@@ -116,6 +116,7 @@ function insert_landlord($landlord) {
     if($result) {
         return true;
     } else {
+        echo "Problem";
         echo mysqli_error($db);
         db_disconnect($db);
         exit;

@@ -3,7 +3,7 @@
     </footer>
 
   </body>
-  <script src="<?= url_for('/js/jquery.slim.min.js'); ?>"></script>
+  <script src="<?= url_for('js/jquery.slim.min.js'); ?>"></script>
   <script src="<?= url_for('js/script.js'); ?>"></script>
   <script src="<?= url_for('js/popper.min.js'); ?>"></script>
   <script src="<?= url_for('js/bootstrap.min.js'); ?>"></script>

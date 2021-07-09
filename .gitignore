@@ -1,7 +1,2 @@
 # all *.sql file should not be tracked
-
-*.sql
-js/
-images/
-css/
 /vendor/
